@@ -52,15 +52,16 @@
       color: #47aaff;
     }
     main {
-      flex: 1;
-      background-color: rgba(0,0,0,0.6);
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 0 40px rgba(0,0,0,0.8);
-      text-align: center;
-    }
+  flex: 1;
+  background-color: rgba(0, 0, 0, 0.7);
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 80px rgba(0, 0, 0, 0.9);
+  text-align: center;
+}
+
     input[type="text"] {
       width: 100%;
       padding: 12px;
@@ -129,6 +130,13 @@
 
   .logo {
     margin-bottom: 10px;
+  }
+}
+@media (max-width: 480px) {
+  main {
+    margin: 20px 15px;
+    padding: 25px;
+    max-width: 90%;
   }
 }
 
