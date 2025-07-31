@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formularz Konkursowy – TIDAL x 47</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('https://i.imgur.com/vxtSiUA.jpeg');
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        color: #ffffff;
+      }
+
+      h1, h2, h3 {
+        font-family: 'Anton', sans-serif;
+      }
+
+      header {
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 20px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #222;
+      }
+
+      .logo {
+        height: 40px;
+      }
+
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        margin-left: 30px;
+        font-size: 15px;
+        transition: color 0.3s ease;
+      }
+
+      nav a:hover {
+        color: #47aaff;
+      }
+
+      .section {
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 40px;
+        margin: 40px auto;
+        max-width: 800px;
+        border-radius: 8px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      select,
+      textarea {
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: 1px solid #47aaff;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 4px;
+        font-size: 14px;
+      }
+
+      input::placeholder,
+      textarea::placeholder {
+        color: #ccc;
+      }
+
+      input:focus,
+      textarea:focus,
+      select:focus {
+        outline: none;
+        border-color: #3591e0;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+
+      button {
+        background-color: #47aaff;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        box-shadow: 0 0 12px rgba(71, 170, 255, 0.4);
+      }
+
+      button:hover {
+        background-color: #3591e0;
+      }
+
+      .footer {
+        background-color: rgba(0, 0, 0, 0.8);
+        padding: 30px 40px;
+        text-align: center;
+        color: #888;
+        font-size: 13px;
+      }
+
+      @media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center !important;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  nav a {
+    margin: 6px 0;
+    font-size: 15px;
+    display: block;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+}
+
+
+    </style>
+  </head>
+  <body>
+    <header>
+  <a href="index.html"><img src="https://i.imgur.com/YPVIBYZ.png" alt="TIDAL x 47" class="logo" /></a>
+  <nav>
+    <a href="index.html">Strona Główna</a>
+    <a href="formularz.html">Formularz Konkursowy</a>
+    <a href="identyfikator.html">Sprawdź czy wygrałeś!</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="regulamin.html">Regulamin</a>
+    <a href="polityka-prywatnosci.html">Polityka Prywatności</a>
+  </nav>
+</header>
+
+
+    <div class="section">
+      <h2>Formularz Konkursowy</h2>
+      <form>
+        <label>Imię</label>
+        <br><br><input type="text" placeholder="Podaj swoje imię" required /><br>
+
+        <label>Nazwisko</label>
+        <br><br><input type="text" placeholder="Podaj swoje nazwisko" required /><br>
+
+        <label>Adres e-mail (używany w TIDAL)</label>
+        <br><br><input type="email" placeholder="example@email.com" required /><br>
+
+        <label>Nazwa użytkownika TIDAL</label>
+        <br><br><input type="text" placeholder="Nazwa z TIDAL" required /><br>
+
+        <label>Na ilu koncertach OKI'ego byłeś?</label>
+        <br><br><select required><br>
+          <option value="">Wybierz</option>
+          <!-- Automatyczne 0-47 -->
+          <script>
+            for(let i=0; i<=47; i++) {
+              document.write(`<option value="${i}">${i}</option>`);
+            }
+          </script>
+
+        </select>
+        <label>Gdybyś miał powiedzieć jedno zdanie, którym opisałbyś muzykę OKI'ego – co by to było?</label>
+        <br><br><textarea rows="4" required></textarea><br>
+
+        <label>Co oznacza dla Ciebie liczba 47? (min. 150 słów)</label>
+        <br><br><textarea rows="6" required></textarea><br>
+
+        <label>Za co kochasz twórczość OKI'ego? (min. 100 słów)</label>
+        <br><br><textarea rows="6" required></textarea><br>
+
+        <button type="submit">Wyślij zgłoszenie</button>
+      </form>
+    </div>
+
+    <div class="section">
+      <h3>Informacje o konkursie</h3>
+      <p>Każda odpowiedź będzie sprawdzana przez wybrane osoby przez samego OKI`ego jak i przez zespół TIDAL POLSKA©.</p>
+      <p>Zwycięzcy będą ogłaszani co tydzień w losowych godzinach, a wiadomości będą wysyłane mailowo.</p>
+      <ul>
+        <li><strong>18.07:</strong> 10 wejściówek, 30 koszulek, 70 płyt CD</li>
+        <li><strong>25.07:</strong> 10 wejściówek, 40 koszulek, 80 płyt CD</li>
+        <li><strong>01.08:</strong> 9 wejściówek, 27 koszulek, 70 płyt CD</li>
+        <li><strong>08.08:</strong> 7 wejściówek, 20 koszulek, 70 płyt CD</li>
+        <li><strong>15.08:</strong> 6 wejściówek, 15 koszulek, 60 płyt CD</li>
+        <li><strong>22.08:</strong> 5 wejściówek, 10 koszulek, 60 płyt CD</li>
+        <li><strong>30.08:</strong> <em>Finałowa pula</em>: 5 koszulek, 60 płyt CD, wejściówek brak</li>
+      </ul>
+    </div>
+
+    <footer class="footer">
+      © 2025 TIDAL x 47. Wszelkie prawa zastrzeżone.
+    </footer>
+  </body>
+</html>

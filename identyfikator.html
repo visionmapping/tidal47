@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sprawdź swój identyfikator – TIDAL x 47</title>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter&display=swap" rel="stylesheet" />
+  <style>
+    html, body {
+      margin: 0; padding: 0; box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url('https://i.imgur.com/vxtSiUA.jpeg');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      color: #fff;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+    }
+    h1, h2 {
+      font-family: 'Anton', sans-serif;
+      color: #47aaff;
+      text-align: center;
+      margin-top: 40px;
+    }
+    header {
+      background-color: rgba(0,0,0,0.9);
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #222;
+    }
+    .logo {
+      height: 40px;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 30px;
+      font-size: 15px;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #47aaff;
+    }
+    main {
+      flex: 1;
+      background-color: rgba(0,0,0,0.6);
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.8);
+      text-align: center;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #47aaff;
+      background-color: rgba(0,0,0,0.5);
+      color: white;
+      margin-bottom: 20px;
+    }
+    input[type="text"]::placeholder {
+      color: #ccc;
+    }
+    button {
+      background-color: #47aaff;
+      border: none;
+      padding: 12px 24px;
+      font-size: 16px;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+      box-shadow: 0 0 12px rgba(71, 170, 255, 0.4);
+      width: 100%;
+      max-width: 300px;
+    }
+    button:hover {
+      background-color: #3591e0;
+    }
+    #result {
+      margin-top: 25px;
+      font-size: 1.2rem;
+      min-height: 3em;
+    }
+    @media (max-width: 480px) {
+      main {
+        margin: 20px 15px;
+        padding: 20px;
+      }
+      button {
+        max-width: 100%;
+      }
+    }
+    @media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center !important;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  nav a {
+    margin: 6px 0;
+    font-size: 15px;
+    display: block;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html"><img src="https://i.imgur.com/YPVIBYZ.png" alt="TIDAL x 47" class="logo" /></a>
+    <nav>
+        <a href="index.html">Strona Główna</a>
+        <a href="formularz.html">Formularz Konkursowy</a>
+        <a href="identyfikator.html">Sprawdź czy wygrałeś!</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="regulamin.html">Regulamin</a>
+        <a href="polityka-prywatnosci.html">Polityka Prywatności</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Sprawdź swój identyfikator</h1>
+    <input type="text" id="idInput" placeholder="Wpisz swój identyfikator" autocomplete="off" />
+    <button onclick="checkId()">Sprawdź</button>
+    <div id="result"></div>
+  </main>
+
+  <script>
+  function checkId() {
+    const input = document.getElementById('idInput').value.trim();
+    const resultDiv = document.getElementById('result');
+    const winningId = 'TIDAL-PL25-QOKI360-9Z7X81B4R2';
+
+    if (input === '') {
+      resultDiv.style.color = '#f44336'; // czerwony
+      resultDiv.textContent = 'Proszę wpisać identyfikator.';
+      return;
+    }
+
+    // Pokaż "ładowanie"
+    resultDiv.style.color = '#fff';
+    resultDiv.textContent = 'Sprawdzam...';
+
+    // Po 2 sekundach pokaż wynik
+    setTimeout(() => {
+      if (input === winningId) {
+        resultDiv.style.color = '#4caf50'; // zielony
+        resultDiv.innerHTML = `
+          🎉 Gratulacje! 🎉<br>
+          Twój identyfikator został zweryfikowany jako zwycięzca <strong>podwójnej wejściówki</strong>!<br>
+          Wygrana pochodzi z puli 3 losowania w dniu <strong>01.08.2025</strong>.<br><br>
+          Prosimy o zachowanie identyfikatora i okazanie go przy wejściu na koncert.
+        `;
+      } else {
+        resultDiv.style.color = '#f44336'; // czerwony
+        resultDiv.innerHTML = `
+          Niestety, Twój identyfikator nie został zweryfikowany jako zwycięzca podwójnej wejściówki.<br>
+          Twoje zgłoszenie jednak wciąż ma szansę w kolejnych losowaniach.<br>
+          Powodzenia!
+        `;
+      }
+    }, 2000);
+  }
+</script>
+
+</body>
+</html>
