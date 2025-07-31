@@ -6,8 +6,14 @@
   <title>Kontakt – TIDAL x 47</title>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter&display=swap" rel="stylesheet" />
   <style>
+
+    *,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
     html, body {
-      margin: 0; padding: 0; box-sizing: border-box;
+      margin: 0; padding: 0;
       font-family: 'Inter', sans-serif;
       background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url('https://i.imgur.com/vxtSiUA.jpeg');
       background-size: cover;
@@ -15,14 +21,17 @@
       background-position: center;
       color: #fff;
       min-height: 100vh;
-      display: flex; flex-direction: column;
+      display: flex;
+      flex-direction: column;
     }
-    h1, h2 {
+
+    h1 {
       font-family: 'Anton', sans-serif;
       color: #47aaff;
       text-align: center;
-      margin-top: 40px;
+      margin-top: 0;
     }
+
     header {
       background-color: rgba(0,0,0,0.9);
       padding: 20px 40px;
@@ -32,15 +41,18 @@
       flex-wrap: wrap;
       border-bottom: 1px solid #222;
     }
+
     .logo {
       height: 40px;
     }
+
     nav {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: flex-end;
     }
+
     nav a {
       color: #fff;
       text-decoration: none;
@@ -48,170 +60,172 @@
       font-size: 15px;
       transition: color 0.3s ease;
     }
+
     nav a:hover {
       color: #47aaff;
     }
+
     main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 0;
+    }
+
+    .contact-box {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 40px;
+  box-shadow: 0 0 80px rgba(0, 0, 0, 0.9);
+  border-radius: 12px;
   max-width: 600px;
-  margin: 40px auto;
-  padding: 30px;
-  background-color: rgba(0,0,0,0.6);
-  border-radius: 8px;
-  box-shadow: 0 0 40px rgba(0,0,0,0.8);
-  color: white;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
 }
 
     form {
       display: flex;
       flex-direction: column;
       gap: 20px;
+      width: 100%;
     }
+
     label {
       font-weight: 600;
       font-size: 1rem;
-      margin-bottom: 6px;
-      display: block;
       color: #47aaff;
     }
+
     input[type="text"],
     input[type="email"],
     textarea {
-  width: 100%;
-  padding: 16px;
-  font-size: 17px;
-  border-radius: 6px;
-  border: 1.5px solid #47aaff;
-  background-color: rgba(0,0,0,0.5);
-  color: white;
-  transition: border-color 0.3s ease;
-}
+      width: 100%;
+      padding: 16px;
+      font-size: 17px;
+      border-radius: 6px;
+      border: 1.5px solid #47aaff;
+      background-color: rgba(0,0,0,0.5);
+      color: white;
+    }
+
     textarea {
-  min-height: 140px;
-  resize: vertical;
-}
+      min-height: 140px;
+      resize: vertical;
+    }
+
     input::placeholder,
     textarea::placeholder {
       color: #ccc;
     }
+
     button {
-  background-color: #47aaff;
-  border: none;
-  padding: 16px 28px;
-  font-size: 18px;
-  color: white;
-  cursor: pointer;
-  border-radius: 6px;
-  transition: background 0.3s ease;
-  box-shadow: 0 0 12px rgba(71, 170, 255, 0.4);
-  width: 100%;
-  max-width: 280px;
-  margin-top: 30px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
+      background-color: #47aaff;
+      border: none;
+      padding: 16px 28px;
+      font-size: 18px;
+      color: white;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+      box-shadow: 0 0 12px rgba(71, 170, 255, 0.4);
+      width: 100%;
+      max-width: 280px;
+      margin: 30px auto 0;
+    }
+
     button:hover {
       background-color: #3591e0;
     }
+
     #message {
       margin-top: 20px;
       font-size: 1.1rem;
       text-align: center;
       min-height: 1.5em;
     }
-    @media (max-width: 480px) {
-      main {
-        margin: 20px 15px 40px;
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      background: rgba(0, 0, 0, 0.85);
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
         padding: 20px;
       }
-      nav a {
-        margin-left: 15px;
-        font-size: 14px;
+
+      nav {
+        flex-direction: column !important;
+        align-items: center;
+        gap: 12px;
+        margin-top: 12px;
       }
-      button {
-        max-width: 100%;
+
+      nav a {
+        margin: 6px 0;
+        font-size: 15px;
+      }
+
+      .logo {
+        margin-bottom: 10px;
+      }
+
+      main {
+        padding: 25px 15px;
+      }
+
+      input, textarea, button {
+        width: 100% !important;
       }
     }
-    @media (max-width: 600px) {
-  header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-  }
-
-  nav {
-    display: flex;
-    flex-direction: column !important;
-    align-items: center;
-    justify-content: center !important;
-    gap: 12px;
-    margin-top: 12px;
-  }
-
-  nav a {
-    margin: 6px 0;
-    font-size: 15px;
-    display: block;
-  }
-
-  .logo {
-    margin-bottom: 10px;
-  }
-}
-@media (max-width: 600px) {
-  main {
-    margin: 30px 15px !important;
-    padding: 25px 15px;
-    box-sizing: border-box;
-  }
-
-  input, textarea, button {
-    width: 100% !important;
-    box-sizing: border-box;
-  }
-}
-
-
   </style>
 </head>
 <body>
   <header>
     <a href="index.html"><img src="https://i.imgur.com/YPVIBYZ.png" alt="TIDAL x 47" class="logo" /></a>
     <nav>
-        <a href="index.html">Strona Główna</a>
-        <a href="formularz.html">Formularz Konkursowy</a>
-        <a href="identyfikator.html">Sprawdź czy wygrałeś!</a>
-        <a href="kontakt.html">Kontakt</a>
-        <a href="regulamin.html">Regulamin</a>
-        <a href="polityka-prywatnosci.html">Polityka Prywatności</a>
+      <a href="index.html">Strona Główna</a>
+      <a href="formularz.html">Formularz Konkursowy</a>
+      <a href="identyfikator.html">Sprawdź czy wygrałeś!</a>
+      <a href="kontakt.html">Kontakt</a>
+      <a href="regulamin.html">Regulamin</a>
+      <a href="polityka-prywatnosci.html">Polityka Prywatności</a>
     </nav>
   </header>
 
   <main>
-  <h1>Kontakt</h1>
-  <p style="text-align: center; font-size: 1.1rem; color: #ccc; max-width: 500px; margin: 0 auto 30px;">
-    Masz pytanie dotyczące konkursu, nagród lub identyfikatora? Napisz do nas.  
-    Jesteśmy tu, by rozwiać Twoje wątpliwości.
-  </p>
-  <form id="contactForm" onsubmit="return handleSubmit(event)">
-    <label for="name">Imię i nazwisko</label>
-    <input type="text" id="name" name="name" placeholder="Twoje imię i nazwisko" required />
+    <div class="contact-box">
+        <h1>Kontakt</h1>
+        <p style="text-align: center; font-size: 1.1rem; color: #ccc; max-width: 500px; margin: 0 auto 30px;">
+          Masz pytanie dotyczące konkursu, nagród lub identyfikatora? Napisz do nas.  
+          Jesteśmy tu, by rozwiać Twoje wątpliwości.
+        </p>
+        <form id="contactForm" onsubmit="return handleSubmit(event)">
+          <label for="name">Imię i nazwisko</label>
+          <input type="text" id="name" name="name" placeholder="Twoje imię i nazwisko" required />
 
-    <label for="email">Adres e-mail</label>
-    <input type="email" id="email" name="email" placeholder="example@email.com" required />
+          <label for="email">Adres e-mail</label>
+          <input type="email" id="email" name="email" placeholder="example@email.com" required />
 
-    <label for="subject">Temat</label>
-    <input type="text" id="subject" name="subject" placeholder="Temat wiadomości" required />
+          <label for="subject">Temat</label>
+          <input type="text" id="subject" name="subject" placeholder="Temat wiadomości" required />
 
-    <label for="messageText">Wiadomość</label>
-    <textarea id="messageText" name="messageText" placeholder="Napisz wiadomość..." required></textarea>
+          <label for="messageText">Wiadomość</label>
+          <textarea id="messageText" name="messageText" placeholder="Napisz wiadomość..." required></textarea>
 
-    <button type="submit">Wyślij wiadomość</button>
-  </form>
-  <div id="message"></div>
-</main>
-
+          <button type="submit">Wyślij wiadomość</button>
+        </form>
+        <div id="message"></div>
+    </div>
+  </main>
 
   <footer>
     © 2025 TIDAL x 47. Wszelkie prawa zastrzeżone.
