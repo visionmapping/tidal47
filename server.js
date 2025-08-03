@@ -1,24 +1,15 @@
-function generateId() {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  let result = '';
-  for (let i = 0; i < 10; i++) {
-    result += chars[Math.floor(Math.random() * chars.length)];
-  }
-  return `TIDAL-PL25-QOKI360-${result}`;
-}
-
 require('dotenv').config();
-const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const fs = require('fs');
 const mysql = require('mysql2');
+const cors = require('cors');
 
 const app = express();
-app.use(cors());
 const PORT = process.env.PORT || 3001;
 
+app.use(cors());
 app.use(bodyParser.json());
 
 const db = mysql.createConnection({
@@ -29,6 +20,20 @@ const db = mysql.createConnection({
   port: process.env.DB_PORT || 3306
 });
 
+function generateId() {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let result = '';
+  for (let i = 0; i < 10; i++) {
+    result += chars[Math.floor(Math.random() * chars.length)];
+  }
+  return `TIDAL-PL25-QOKI360-${result}`;
+}
+
+function formatDate(date) {
+  const pad = n => (n < 10 ? '0' + n : n);
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
+}
+
 app.post('/api/zgloszenie', async (req, res) => {
   const {
     imie, nazwisko, email, login_tidal,
@@ -36,6 +41,7 @@ app.post('/api/zgloszenie', async (req, res) => {
   } = req.body;
 
   const identyfikator = generateId();
+  const data_zgloszenia = formatDate(new Date());
 
   try {
     const [rows] = await db.promise().query(
@@ -48,29 +54,21 @@ app.post('/api/zgloszenie', async (req, res) => {
     }
 
     await db.promise().query(
-      'INSERT INTO zgloszenia (imie, nazwisko, email, login_tidal, koncerty, odpowiedz_1, odpowiedz_2, odpowiedz_3, identyfikator) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-      [imie, nazwisko, email, login_tidal, koncerty, odpowiedz_1, odpowiedz_2, odpowiedz_3, identyfikator]
+      'INSERT INTO zgloszenia (imie, nazwisko, email, login_tidal, koncerty, odpowiedz_1, odpowiedz_2, odpowiedz_3, identyfikator, data_zgloszenia) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      [imie, nazwisko, email, login_tidal, koncerty, odpowiedz_1, odpowiedz_2, odpowiedz_3, identyfikator, data_zgloszenia]
     );
 
-const identyfikator = generateId();
-const dataZgloszenia = new Date().toLocaleDateString('pl-PL', {
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric'
-});
-
-let html = fs.readFileSync('./mail1_template.html', 'utf8')
-  .replace('{{IMIE}}', imie)
-  .replace('{{NAZWISKO}}', nazwisko)
-  .replace('{{EMAIL}}', email)
-  .replace('{{TIDAL}}', login_tidal)
-  .replace('{{KONCERTY}}', koncerty)
-  .replace('{{ODPOWIEDZ1}}', odpowiedz_1)
-  .replace('{{ODPOWIEDZ2}}', odpowiedz_2)
-  .replace('{{ODPOWIEDZ3}}', odpowiedz_3)
-  .replace('{{IDENTYFIKATOR}}', identyfikator)
-  .replace('{{DATA_ZGLOSZENIA}}', dataZgloszenia);
-
+    let html = fs.readFileSync('./mail1_template.html', 'utf8')
+      .replace('{{IMIE}}', imie)
+      .replace('{{NAZWISKO}}', nazwisko)
+      .replace('{{EMAIL}}', email)
+      .replace('{{TIDAL}}', login_tidal)
+      .replace('{{KONCERTY}}', koncerty)
+      .replace('{{ODPOWIEDZ1}}', odpowiedz_1)
+      .replace('{{ODPOWIEDZ2}}', odpowiedz_2)
+      .replace('{{ODPOWIEDZ3}}', odpowiedz_3)
+      .replace('{{IDENTYFIKATOR}}', identyfikator)
+      .replace('{{DATA_ZGLOSZENIA}}', data_zgloszenia);
 
     let transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -89,11 +87,11 @@ let html = fs.readFileSync('./mail1_template.html', 'utf8')
 
     res.send('Zgłoszenie przyjęte');
   } catch (err) {
-    console.error(err);
+    console.error('Błąd backendu:', err);
     res.status(500).send('Błąd serwera');
   }
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Serwer działa na porcie ${PORT}`);
 });
