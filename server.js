@@ -34,11 +34,16 @@ function generateId() {
 }
 
 function formatDate(date) {
-  const offset = 2 * 60; // dla Polski: UTC+2
-  const localTime = new Date(date.getTime() + offset * 60000);
-  const pad = n => (n < 10 ? '0' + n : n);
-  return `${localTime.getFullYear()}-${pad(localTime.getMonth() + 1)}-${pad(localTime.getDate())} ${pad(localTime.getHours())}:${pad(localTime.getMinutes())}:${pad(localTime.getSeconds())}`;
+  const miesiace = [
+    'stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca',
+    'lipca', 'sierpnia', 'września', 'października', 'listopada', 'grudnia'
+  ];
+  const dzien = date.getDate();
+  const miesiac = miesiace[date.getMonth()];
+  const rok = date.getFullYear();
+  return `${dzien} ${miesiac} ${rok}`;
 }
+
 
 app.post('/api/zgloszenie', async (req, res) => {
   const {
