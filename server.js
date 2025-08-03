@@ -9,7 +9,6 @@ function generateId() {
 
 require('dotenv').config();
 const cors = require('cors');
-app.use(cors());
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
@@ -17,6 +16,7 @@ const fs = require('fs');
 const mysql = require('mysql2');
 
 const app = express();
+app.use(cors());
 const PORT = process.env.PORT || 3001;
 
 app.use(bodyParser.json());
