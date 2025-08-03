@@ -52,16 +52,25 @@ app.post('/api/zgloszenie', async (req, res) => {
       [imie, nazwisko, email, login_tidal, koncerty, odpowiedz_1, odpowiedz_2, odpowiedz_3, identyfikator]
     );
 
-    let html = fs.readFileSync('./mail1_template.html', 'utf8')
-      .replace('{{IMIE}}', imie)
-      .replace('{{NAZWISKO}}', nazwisko)
-      .replace('{{EMAIL}}', email)
-      .replace('{{TIDAL}}', login_tidal)
-      .replace('{{KONCERTY}}', koncerty)
-      .replace('{{ODPOWIEDZ1}}', odpowiedz_1)
-      .replace('{{ODPOWIEDZ2}}', odpowiedz_2)
-      .replace('{{ODPOWIEDZ3}}', odpowiedz_3)
-      .replace('{{IDENTYFIKATOR}}', identyfikator);
+const identyfikator = generateId();
+const dataZgloszenia = new Date().toLocaleDateString('pl-PL', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+
+let html = fs.readFileSync('./mail1_template.html', 'utf8')
+  .replace('{{IMIE}}', imie)
+  .replace('{{NAZWISKO}}', nazwisko)
+  .replace('{{EMAIL}}', email)
+  .replace('{{TIDAL}}', login_tidal)
+  .replace('{{KONCERTY}}', koncerty)
+  .replace('{{ODPOWIEDZ1}}', odpowiedz_1)
+  .replace('{{ODPOWIEDZ2}}', odpowiedz_2)
+  .replace('{{ODPOWIEDZ3}}', odpowiedz_3)
+  .replace('{{IDENTYFIKATOR}}', identyfikator)
+  .replace('{{DATA_ZGLOSZENIA}}', dataZgloszenia);
+
 
     let transporter = nodemailer.createTransport({
       service: 'gmail',
