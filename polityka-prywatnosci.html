@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TIDAL x 47 - Polityka Prywatności</title>
+  <title>Polityka Prywatności – TIDAL x 47</title>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter&display=swap" rel="stylesheet"/>
   <link rel="icon" type="image/png" href="favicon.png"/>
   <style>
@@ -61,13 +61,36 @@
     ul {
       padding-left: 1.2rem;
     }
-footer {
-      background-color: rgba(0,0,0,0.8);
-      padding: 30px 40px;
-      text-align: center;
-      color: #888;
-      font-size: 13px;
-    }
+.footer {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 30px 40px;
+  color: #888;
+  font-size: 13px;
+  text-align: center;
+}
+
+.footer-text {
+  text-align: center;
+}
+
+.footer-icons {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 18px;
+}
+
+@media (max-width: 600px) {
+  .footer-icons {
+    position: static;
+    margin-top: 15px;
+    justify-content: center;
+    transform: none;
+  }
+}
 
 @media (max-width: 600px) {
   header {
@@ -103,7 +126,7 @@ footer {
 </head>
 <body>
   <header>
-    <a href="index.html"><img src="https://i.imgur.com/YPVIBYZ.png" alt="TIDAL x 47" style="height: 40px;" /></a>
+    <a href="tidal47.com"><img src="https://i.imgur.com/YPVIBYZ.png" alt="TIDAL x 47" style="height: 40px;" /></a>
     <nav>
         <a href="https://tidal47.com">Strona Główna</a>
         <a href="formularz.html">Formularz Konkursowy</a>
@@ -148,8 +171,19 @@ footer {
 
     <p>Więcej szczegółów i pełna polityka dostępne są na stronie Going oraz w regulaminie serwisu.</p>
   </main>
-    <footer>
-      © 2025 TIDAL x 47. Wszelkie prawa zastrzeżone.
-    </footer>
+<footer class="footer">
+  <div class="footer-text">© 2025 TIDAL x 47. Wszelkie prawa zastrzeżone.</div>
+  <div class="footer-icons">
+    <a href="https://tidal.com/" target="_blank" title="TIDAL">
+      <img src="https://i.imgur.com/jlgxeca.png" alt="TIDAL" style="height:22px; opacity:0.85;" />
+    </a>
+    <a href="https://www.instagram.com/spietadresiara/" target="_blank" title="Instagram OKI">
+      <img src="https://i.imgur.com/EysGnP0.png" alt="Instagram" style="height:22px; opacity:0.85;" />
+    </a>
+    <a href="https://www.youtube.com/@2020label" target="_blank" title="YouTube OKI">
+      <img src="https://i.imgur.com/lcDqxUo.png" alt="YouTube" style="height:22px; opacity:0.85;" />
+    </a>
+  </div>
+</footer>
 </body>
 </html>

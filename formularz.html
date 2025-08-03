@@ -1,12 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="pl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Formularz Konkursowy – TIDAL x 47</title>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="favicon.png"/>
-    <style>
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Formularz Konkursowy – TIDAL x 47</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter&amp;display=swap" rel="stylesheet"/>
+<link href="favicon.png" rel="icon" type="image/png">
+<style>
       body {
         font-family: 'Inter', sans-serif;
         margin: 0;
@@ -98,13 +99,35 @@
       }
 
       .footer {
-        background-color: rgba(0, 0, 0, 0.8);
-        padding: 30px 40px;
-        text-align: center;
-        color: #888;
-        font-size: 13px;
-      }
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 30px 40px;
+  color: #888;
+  font-size: 13px;
+  text-align: center;
+}
 
+.footer-text {
+  text-align: center;
+}
+
+.footer-icons {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 18px;
+}
+
+@media (max-width: 600px) {
+  .footer-icons {
+    position: static;
+    margin-top: 15px;
+    justify-content: center;
+    transform: none;
+  }
+}
       @media (max-width: 600px) {
   header {
     flex-direction: column;
@@ -135,80 +158,65 @@
 
 
     </style>
-  </head>
-  <body>
-    <header>
-  <a href="index.html"><img src="https://i.imgur.com/YPVIBYZ.png" alt="TIDAL x 47" class="logo" /></a>
-  <nav>
-    <a href="index.html">Strona Główna</a>
-    <a href="formularz.html">Formularz Konkursowy</a>
-    <a href="identyfikator.html">Sprawdź czy wygrałeś!</a>
-    <a href="kontakt.html">Kontakt</a>
-    <a href="regulamin.html">Regulamin</a>
-    <a href="polityka-prywatnosci.html">Polityka Prywatności</a>
-  </nav>
+</link></head>
+<body>
+<header>
+<a href="tidal47.com"><img alt="TIDAL x 47" class="logo" src="https://i.imgur.com/YPVIBYZ.png"/></a>
+<nav>
+<a href="index.html">Strona Główna</a>
+<a href="formularz.html">Formularz Konkursowy</a>
+<a href="identyfikator.html">Sprawdź czy wygrałeś!</a>
+<a href="kontakt.html">Kontakt</a>
+<a href="regulamin.html">Regulamin</a>
+<a href="polityka-prywatnosci.html">Polityka Prywatności</a>
+</nav>
 </header>
-
-
-    <div class="section">
-      <h2>Formularz Konkursowy</h2>
-      <form>
-        <label>Imię</label>
-        <br><br><input type="text" placeholder="Podaj swoje imię" required /><br>
-
-        <label>Nazwisko</label>
-        <br><br><input type="text" placeholder="Podaj swoje nazwisko" required /><br>
-
-        <label>Adres e-mail (używany w TIDAL)</label>
-        <br><br><input type="email" placeholder="example@email.com" required /><br>
-
-        <label>Nazwa użytkownika TIDAL</label>
-        <br><br><input type="text" placeholder="Nazwa z TIDAL" required /><br>
-
-        <label>Na ilu koncertach OKI'ego byłeś?</label>
-        <br><br><select required><br>
-          <option value="">Wybierz</option>
-          <!-- Automatyczne 0-47 -->
-          <script>
+<div class="section">
+<h2 style="color:#47aaff;">Formularz Konkursowy</h2>
+<form>
+<label>Imię</label>
+<br/><br/><input placeholder="Podaj swoje imię" required="" type="text"/><br/>
+<label>Nazwisko</label>
+<br/><br/><input placeholder="Podaj swoje nazwisko" required="" type="text"/><br/>
+<label>Adres e-mail (używany w TIDAL)</label>
+<br/><br/><input placeholder="example@email.com" required="" type="email"/><br/>
+<label>Nazwa użytkownika TIDAL</label>
+<br/><br/><input placeholder="Nazwa z TIDAL" required="" type="text"/><br/>
+<label>Na ilu koncertach OKI'ego byłeś?</label>
+<br/><br/><select required=""><br/>
+<option value="">Wybierz</option>
+<!-- Automatyczne 0-47 -->
+<script>
             for(let i=0; i<=47; i++) {
               document.write(`<option value="${i}">${i}</option>`);
             }
           </script>
+</select>
+<label>Gdybyś miał powiedzieć jedno zdanie, którym opisałbyś muzykę OKI'ego – co by to było?</label>
+<br/><br/><textarea required="" rows="4"></textarea><br/>
+<label>Co oznacza dla Ciebie liczba 47? (min. 150 słów)</label>
+<br/><br/><textarea required="" rows="6"></textarea><br/>
+<label>Za co kochasz twórczość OKI'ego? (min. 100 słów)</label>
+<br/><br/><textarea required="" rows="6"></textarea><br/>
+<button type="submit">Wyślij zgłoszenie</button>
+</form>
+</div>
+<div class="section">
+<h2 style="color:#47aaff;">Informacje o konkursie</h2>
+<p>Każda odpowiedź będzie sprawdzana przez wybrane osoby przez samego OKI`ego jak i przez zespół TIDAL POLSKA©.</p>
+<p>Zwycięzcy będą ogłaszani co tydzień w losowych godzinach, a wiadomości będą wysyłane mailowo.</p>
+<ul>
+<li><strong>19.07:</strong> 10 wejściówek, 30 koszulek, 70 płyt CD</li>
+<li><strong>26.07:</strong> 10 wejściówek, 40 koszulek, 80 płyt CD</li>
+<li><strong>06.08:</strong> 9 wejściówek, 27 koszulek, 70 płyt CD</li>
+<li><strong>13.08:</strong> 7 wejściówek, 20 koszulek, 70 płyt CD</li>
+<li><strong>20.08:</strong> 6 wejściówek, 15 koszulek, 60 płyt CD</li>
+<li><strong>27.08:</strong> 5 wejściówek, 10 koszulek, 60 płyt CD</li>
+<li><strong>30.08:</strong> <em>Finałowa pula</em>: 5 koszulek, 60 płyt CD, wejściówek na OKI - 360° ERA47 - brak</li>
+</ul>
+</div>
 
-        </select>
-        <label>Gdybyś miał powiedzieć jedno zdanie, którym opisałbyś muzykę OKI'ego – co by to było?</label>
-        <br><br><textarea rows="4" required></textarea><br>
-
-        <label>Co oznacza dla Ciebie liczba 47? (min. 150 słów)</label>
-        <br><br><textarea rows="6" required></textarea><br>
-
-        <label>Za co kochasz twórczość OKI'ego? (min. 100 słów)</label>
-        <br><br><textarea rows="6" required></textarea><br>
-
-        <button type="submit">Wyślij zgłoszenie</button>
-      </form>
-    </div>
-
-    <div class="section">
-      <h3>Informacje o konkursie</h3>
-      <p>Każda odpowiedź będzie sprawdzana przez wybrane osoby przez samego OKI`ego jak i przez zespół TIDAL POLSKA©.</p>
-      <p>Zwycięzcy będą ogłaszani co tydzień w losowych godzinach, a wiadomości będą wysyłane mailowo.</p>
-      <ul>
-        <li><strong>19.07:</strong> 10 wejściówek, 30 koszulek, 70 płyt CD</li>
-        <li><strong>26.07:</strong> 10 wejściówek, 40 koszulek, 80 płyt CD</li>
-        <li><strong>06.08:</strong> 9 wejściówek, 27 koszulek, 70 płyt CD</li>
-        <li><strong>13.08:</strong> 7 wejściówek, 20 koszulek, 70 płyt CD</li>
-        <li><strong>20.08:</strong> 6 wejściówek, 15 koszulek, 60 płyt CD</li>
-        <li><strong>27.08:</strong> 5 wejściówek, 10 koszulek, 60 płyt CD</li>
-        <li><strong>30.08:</strong> <em>Finałowa pula</em>: 5 koszulek, 60 płyt CD, wejściówek na OKI - 360° ERA47 - brak</li>
-      </ul>
-    </div>
-
-    <footer class="footer">
-      © 2025 TIDAL x 47. Wszelkie prawa zastrzeżone.
-    </footer>
-
-    <script>
+<script>
 document.querySelector("form").addEventListener("submit", async function (e) {
   e.preventDefault();
 
@@ -244,5 +252,19 @@ document.querySelector("form").addEventListener("submit", async function (e) {
 });
 </script>
 
-  </body>
+<footer class="footer">
+  <div class="footer-text">© 2025 TIDAL x 47. Wszelkie prawa zastrzeżone.</div>
+  <div class="footer-icons">
+    <a href="https://tidal.com/" target="_blank" title="TIDAL">
+      <img src="https://i.imgur.com/jlgxeca.png" alt="TIDAL" style="height:22px; opacity:0.85;" />
+    </a>
+    <a href="https://www.instagram.com/spietadresiara/" target="_blank" title="Instagram OKI">
+      <img src="https://i.imgur.com/EysGnP0.png" alt="Instagram" style="height:22px; opacity:0.85;" />
+    </a>
+    <a href="https://www.youtube.com/@2020label" target="_blank" title="YouTube OKI">
+      <img src="https://i.imgur.com/lcDqxUo.png" alt="YouTube" style="height:22px; opacity:0.85;" />
+    </a>
+  </div>
+</footer>
+</body>
 </html>
