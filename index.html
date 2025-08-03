@@ -1,1 +1,442 @@
-tidalx47-oki360wro-infosoon
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TIDAL x 47 – Konkurs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png"/>
+<style>
+  /* Podstawowe style strony */
+  html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    color: #ffffff;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3 {
+    font-family: 'Anton', sans-serif;
+  }
+
+  body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)), url('https://i.imgur.com/vxtSiUA.jpeg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+  }
+
+  header {
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #222;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    height: 40px;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 30px;
+    font-size: 15px;
+    transition: color 0.3s ease;
+  }
+
+  nav a:hover {
+    color: #47aaff;
+  }
+
+  .overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 60px 40px;
+  }
+
+  .hero {
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+    color: #47aaff;
+    margin-bottom: 20px;
+  }
+
+  .hero p {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .countdown {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 30px 0 10px;
+  }
+
+  .button-row {
+    margin: 20px 0 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .btn {
+    background-color: #47aaff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    box-shadow: 0 0 12px rgba(71, 170, 255, 0.4);
+    width: 90%;
+    max-width: 320px;
+    text-align: center;
+  }
+
+  .btn:hover {
+    background-color: #3591e0;
+  }
+
+  .section {
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin-top: 20px;
+  }
+
+  .section h2 {
+    color: #47aaff;
+    margin-bottom: 10px;
+  }
+
+  .footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 30px 40px;
+    text-align: center;
+    color: #888;
+    font-size: 13px;
+  }
+
+
+  /* === POPUP === */
+
+  #voice-popup {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+
+  #voice-popup .popup-content {
+    background-color: rgba(30, 30, 30, 0.95);
+    border: 2px solid white;
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+    max-width: 90%;
+    width: 500px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  #voice-popup h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.3;
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(255,255,255,0.6);
+  }
+
+  #voice-popup button {
+    padding: 0.7rem 1.5rem;
+    font-size: 1.1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    border: 2px solid white;
+  }
+
+  /* Przyciski - kontener */
+  .popup-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+    flex-direction: row;
+  }
+
+  /* Przycisk */
+  .popup-btn {
+    width: 200px;
+    padding: 0.8rem 1.2rem;
+    font-size: 1.05rem;
+    border-radius: 0.5rem;
+    border: 2px solid white;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+
+  /* Styl niebieskiego przycisku */
+  .play-btn {
+    background-color: #1d4ed8;
+    color: white;
+  }
+
+  /* Styl ciemnego z różową ramką */
+  .close-btn {
+    background-color: #111827;
+    color: white;
+    border-color: #f43f5e;
+  }
+
+  /* Hover */
+  .play-btn:hover {
+    background-color: #2563eb;
+  }
+
+  .close-btn:hover {
+    background-color: #1f2937;
+    border-color: #fb7185;
+  }
+
+  /* 📱 Telefon – responsywność */
+  @media (max-width: 480px) {
+    #voice-popup .popup-content {
+      padding: 1.2rem;
+      width: 95%;
+    }
+
+    #voice-popup h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    #voice-popup button {
+      font-size: 0.95rem;
+      padding: 0.5rem 1rem;
+    }
+
+    .popup-buttons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .popup-btn {
+      width: 100%;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column !important;
+    align-items: center;
+    justify-content: center !important;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  nav a {
+    margin: 6px 0;
+    font-size: 15px;
+    display: block;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+}
+
+
+</style>
+    <script>
+      function updateCountdown() {
+        const eventDate = new Date('2025-08-30T17:47:00');
+        const now = new Date();
+        const diff = eventDate - now;
+
+        if (diff <= 0) {
+          document.getElementById("countdown").innerText = "Bramki już są otwarte!";
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        document.getElementById("countdown").innerText =
+          `Bramki w Hali Stulecia otwierają się za: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+      }
+
+      setInterval(updateCountdown, 1000);
+
+      function playOkiMessage() {
+        document.getElementById("voice-popup").style.display = "none";
+        document.getElementById("okiAudio").play();
+      }
+
+      function closeOkiPopup() {
+        document.getElementById("voice-popup").style.display = "none";
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <a href="index.html">
+        <img src="https://i.imgur.com/YPVIBYZ.png" alt="TIDAL x 47" class="logo" />
+      </a>
+      <nav>
+        <a href="index.html">Strona Główna</a>
+        <a href="formularz.html">Formularz Konkursowy</a>
+        <a href="identyfikator.html">Sprawdź czy wygrałeś!</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="regulamin.html">Regulamin</a>
+        <a href="polityka-prywatnosci.html">Polityka Prywatności</a>
+      </nav>
+    </header>
+
+    <div class="overlay">
+      <section class="hero">
+        <h1>KONKURS TIDAL x 47</h1>
+        <img src="https://i.imgur.com/cexylcf.png" alt="ERA47 Logo" style="height: 150px;">
+        <p>
+          Z okazji ostatniego koncertu na solowej trasie Oskara <strong>WE ARE ERA 47 TOUR</strong> oraz współpracy z TIDAL,
+          ogłaszamy wyjątkowy konkurs dla największych fanów twórczości <strong>OKI`ego</strong>!
+          Do rozdania jest <strong>47 podwójnych zaproszeń</strong> (94 bilety) na finałowe wydarzenie
+          <strong>OKI - 360° ERA47</strong>, które odbędzie się 30 sierpnia 2025 roku we <strong>Wrocławskiej Hali Stulecia</strong>.
+        </p>
+      </section>
+
+      <div class="countdown" id="countdown"></div>
+      <br>
+      <div class="button-row">
+        <a href="formularz.html" class="btn">DOŁĄCZ DO KONKURSU</a>
+        <a href="identyfikator.html" class="btn">SPRAWDŹ CZY WYGRAŁEŚ!</a>
+      </div>
+
+      <section class="section" id="kimjestoki">
+        <h2>KIM JEST OKI?</h2>
+        <p>
+          <strong>Oskar Kamiński (ur. 10 sierpnia 1998 w Lubinie)</strong>, znany jako OKI to jeden z najbardziej wpływowych i charyzmatycznych artystów na scenie polskiego rapu.
+          Twórca hitów takich jak <em>"JEREMY SOCHAN"</em>, <em>"ILE LAT"</em>, <em>"JEŻYK"</em>, <em>"JAKIE TO UCZUCIE?"</em>,
+          <em>"SPRZEDAŁEM SIĘ"</em> czy też w ramach supergrupy OIO: <em>"WORKI W TŁUM"</em>, <em>"AMERYKAŃSKIE TELEDYSKI"</em>. 
+        </p>
+        <br>
+        <p>OKI w swojej karierze wydał już kilka albumów: <strong>"Oki & Nearr" (2018)</strong>, <strong>"47universe" (2019)</strong>, <strong>"47playground" (2020)</strong>, 
+        <strong>"PRODUKT47" (2022)</strong>, <strong>"ERA47" (2024)"</strong>. OKI we współpracy stworzył również <strong>"OIO" (2021)</strong> z Otsochodzi i Young Igim oraz <strong>club2020 (2023)</strong> z wieloma innymi polskimi twórcami, takimi jak Otsochodzi, Young Igi,
+        Taco Hemingway. Do jego najpopularniejszego mixtape`u możemy zaliczyć <strong>"77747 mixtape (2020)</strong>, który pokrył się złotą płytą.
+        </p>
+        <br>
+        <p>OKI w swojej karierze stworzył wiele numerów z wieloma goścmi, takimi jak <strong>Sobel, Taco Hemingway, Otsochodzi, Young Igi, Żabson</strong>, a w niedawnym czasie pojawił się jego wspólny kawałek stworzony z <strong>QUEBONAFIDE "Wkrótce"</strong>,
+        czyli artystą, który zakończył swoją koncertową karierę na PGE Narodowym w czerwcu 2025 roku.</p>
+      </section>
+
+      <section class="section">
+        <h2>SKĄD TAKI KONKURS?</h2>
+        <p>
+            Konkurs przed <strong>OSTATNIM KONCERTEM OKI`ego W 2025</strong> zostaje stworzony dzięki współpracy TIDAL POLSKA© z Oskarem Kamińskim (OKI`m).
+            Zgłoszenia do konkursu przyjmujemy od <strong>14 lipca 2025</strong> czyli <strong>47 dni przed finałowym koncertem w Wrocławiu</strong>
+            i jest skierowany wyłącznie dla najwierniejszych słuchaczy OKI`ego.
+            <br>
+            Udział mogą wziąć tylko użytkownicy platformy TIDAL, którzy znaleźli się w gronie <strong>47 najczęstszych słuchaczy</strong> jego całej dyskografii.
+            Dodatkowo, aby wziąć udział w konkursie, użytkownicy muszą wypełnić formularz i przejść przez quiz sprawdzający wiedzę o twórczości artysty, a quiz są w stanie rozwiązać jego tylko najwierniejsi fani.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>NAGRODY W KONKURSIE</h2>
+        <p>
+            Nagrodą główną do zgarnięcia w konkursie TIDAL x 47 to omawiane wcześniej <strong>PODWÓJNE WEJŚCIÓWKI NA OKI - 360° ERA47</strong>. Liczba sztuk: <strong>47</strong>.<br>
+            Drugą do zdobycia nagrodą jest <strong>KOSZULKA BIAŁA z kolekcji "I💙47"</strong>. Liczba sztuk: <strong>147</strong>. [Wybranie odpowiedniego dla siebie rozmiaru będzie dostępne po wpisaniu identyfikatora w "SPRAWDŹ CZY WYGRAŁEŚ!"]<br>
+            Trzecią nagrodą do zdobycia w konkursie to <strong>PŁYTA CD ERA47</strong>. Liczba sztuk: <strong>470</strong>.<br><br>
+            <em>Łącznie w konkursie wygra aż 664 słuchaczy OKI`ego, z czego 47 z nich może zabrać kolejne 47 na wydarzenie "OKI - 360° ERA47".</em>
+        </p>
+      </section>
+
+      <section class="section">
+  <h2>DLACZEGO WARTO BYĆ Z NAMI NA OSTATNIM KONCERCIE OKIEGO W 2025?</h2>
+  <p>
+    Bo to nie jest tylko koncert, to nie jest zwykłe show. To jest rytuał. <strong>OKI - 360° ERA47</strong> to zwieńczenie zaczętej w zeszłym roku trasy, która wyznaczyła nowy kierunek na scenie.
+    OKI jest pierwszym rapowym artystą w Polsce, który zagra na scenie 360°. Pierwszego razu drugi raz już nie będzie nigdy.
+    <br>
+    To właśnie tu - we <strong>Wrocławskiej Hali Stulecia</strong> spotkają się Ci, którzy <em>naprawdę rozumieją świat kolczastego OKI`ego.</em>
+    <br>
+    🔹 Usłyszysz wszystkie największe bangery i hity - od <em>"JEREMY SOCHAN"</em>, <em>"AGENT47"</em>, <em>"WORKI W TŁUM"</em> po jego najstarsze kawałki, jak <em>"KTOŚ CZEKA"</em> czy <em>"JUSTIN BIEBER"</em> z zupełnie nowym brzmieniem.<br>
+    🔹 Zanurzysz się w 360-stopniowym show - dźwięk, światła, vibe. Wszystko czego pragniesz. To będzie jedna z najlepszych rzeczy jaką przeżyjesz w życiu.<br>
+    🔹 Spotkasz innych wybrańców - <strong>94 osób</strong> z całej Polski (i nie tylko!), które razem... żyją muzyką OKIEGO.<br>
+    🔹 Zwieńczenie tak ważnej trasy jak <strong>WE ARE ERA 47 TOUR</strong> to wydarzenie, na którym z pewnością nie zabraknie gości specjalnych. <br>
+    <br>
+    To zamknięcie pewnej ery. Tego nie będzie na YouTube albo TikToku. Nie będzie powtórki. <strong>Jesteś albo Cię nie ma.</strong>
+  </p>
+</section>
+
+      <section class="section">
+        <h2>POSŁUCHAJ NAJWIĘKSZYCH HITÓW OKIEGO PRZED KONCERTEM</h2>
+        <p>Fragmenty najważniejszych utworów z <strong>ERA47</strong>:</p>
+        <div style="display: flex; flex-direction: column; gap: 20px; align-items: center; margin-top: 20px;">
+            <iframe src="https://embed.tidal.com/tracks/366658098" width="100%" height="120" allow="encrypted-media" sandbox="allow-same-origin allow-scripts allow-forms allow-popups" title="JEREMY SOCHAN"></iframe>
+            <iframe src="https://embed.tidal.com/tracks/366658111" width="100%" height="120" allow="encrypted-media" sandbox="allow-same-origin allow-scripts allow-forms allow-popups" title="AGENT47"></iframe>
+            <iframe src="https://embed.tidal.com/tracks/366658102" width="100%" height="120" allow="encrypted-media" sandbox="allow-same-origin allow-scripts allow-forms allow-popups" title="NA ZAWSZE MAŁOLAT"></iframe>
+        </div>
+      </section>
+
+    </div>
+
+    <footer class="footer">
+      © 2025 TIDAL x 47. Wszelkie prawa zastrzeżone.
+    </footer>
+
+    <!-- OKI POPUP -->
+    <div id="voice-popup">
+      <div class="popup-content">
+        <h2>OKI zostawił wiadomość głosową dla Ciebie.<br>Sprawdź co ma do powiedzenia!</h2>
+<div class="popup-buttons">
+  <button class="popup-btn play-btn" onclick="playOkiMessage()">▶️ Odtwórz wiadomość</button>
+  <button class="popup-btn close-btn" onclick="closeOkiPopup()">❌ Nie, może później</button>
+</div>
+      </div>
+    </div>
+
+    <audio id="okiAudio" src="okityle.m4a"></audio>
+
+  </body>
+</html>
