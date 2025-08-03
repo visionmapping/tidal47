@@ -30,8 +30,10 @@ function generateId() {
 }
 
 function formatDate(date) {
+  const offset = 2 * 60; // dla Polski: UTC+2
+  const localTime = new Date(date.getTime() + offset * 60000);
   const pad = n => (n < 10 ? '0' + n : n);
-  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
+  return `${localTime.getFullYear()}-${pad(localTime.getMonth() + 1)}-${pad(localTime.getDate())} ${pad(localTime.getHours())}:${pad(localTime.getMinutes())}:${pad(localTime.getSeconds())}`;
 }
 
 app.post('/api/zgloszenie', async (req, res) => {
