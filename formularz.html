@@ -196,10 +196,10 @@
       <ul>
         <li><strong>19.07:</strong> 10 wejściówek, 30 koszulek, 70 płyt CD</li>
         <li><strong>26.07:</strong> 10 wejściówek, 40 koszulek, 80 płyt CD</li>
-        <li><strong>02.08:</strong> 9 wejściówek, 27 koszulek, 70 płyt CD</li>
-        <li><strong>09.08:</strong> 7 wejściówek, 20 koszulek, 70 płyt CD</li>
-        <li><strong>16.08:</strong> 6 wejściówek, 15 koszulek, 60 płyt CD</li>
-        <li><strong>23.08:</strong> 5 wejściówek, 10 koszulek, 60 płyt CD</li>
+        <li><strong>06.08:</strong> 9 wejściówek, 27 koszulek, 70 płyt CD</li>
+        <li><strong>13.08:</strong> 7 wejściówek, 20 koszulek, 70 płyt CD</li>
+        <li><strong>20.08:</strong> 6 wejściówek, 15 koszulek, 60 płyt CD</li>
+        <li><strong>27.08:</strong> 5 wejściówek, 10 koszulek, 60 płyt CD</li>
         <li><strong>30.08:</strong> <em>Finałowa pula</em>: 5 koszulek, 60 płyt CD, wejściówek na OKI - 360° ERA47 - brak</li>
       </ul>
     </div>
@@ -207,5 +207,42 @@
     <footer class="footer">
       © 2025 TIDAL x 47. Wszelkie prawa zastrzeżone.
     </footer>
+
+    <script>
+document.querySelector("form").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const form = e.target;
+  const dane = {
+    imie: form[0].value,
+    nazwisko: form[1].value,
+    email: form[2].value,
+    login_tidal: form[3].value,
+    koncerty: form[4].value,
+    odpowiedz_1: form[5].value,
+    odpowiedz_2: form[6].value,
+    odpowiedz_3: form[7].value
+  };
+
+  try {
+    const res = await fetch("https://tidal47-api.onrender.com/api/zgloszenie", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dane)
+    });
+
+    if (res.ok) {
+      alert("✅ Dziękujemy! Jeśli przejdziesz dalej, otrzymasz wiadomość e-mail.");
+      form.reset();
+    } else {
+      const text = await res.text();
+      alert("❌ Błąd zgłoszenia: " + text);
+    }
+  } catch (err) {
+    alert("🚫 Błąd połączenia z serwerem.");
+  }
+});
+</script>
+
   </body>
 </html>
