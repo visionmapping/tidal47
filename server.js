@@ -78,12 +78,18 @@ app.post('/api/zgloszenie', async (req, res) => {
       }
     });
 
-    await transporter.sendMail({
-      from: `"TIDAL x 47" <${process.env.EMAIL_USER}>`,
-      to: email,
-      subject: 'TIDAL x 47 – Potwierdzenie zgłoszenia ✅',
-      html: html
-    });
+    try {
+  const info = await transporter.sendMail({
+    from: `"TIDAL x 47" <${process.env.EMAIL_USER}>`,
+    to: email,
+    subject: 'TIDAL x 47 – Potwierdzenie zgłoszenia ✅',
+    html: html
+  });
+  console.log("✅ Mail wysłany:", info.response);
+} catch (error) {
+  console.error("❌ Błąd przy wysyłaniu maila:", error);
+}
+
 
     res.send('Zgłoszenie przyjęte');
   } catch (err) {
